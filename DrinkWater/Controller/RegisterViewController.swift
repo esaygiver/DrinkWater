@@ -16,6 +16,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var loadingLabel: UILabel!
     @IBOutlet private weak var loadingNewPageActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var emailView: UIView!
+    @IBOutlet private weak var passwordView: UIView!
     
     enum ScreenState: String {
         case loading
@@ -43,10 +45,11 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         
         screenState = .empty
+        viewWithCurve()
     }
     
     private func changeRootViewController() {
-        guard let mainController = UIStoryboard.myStoryboardName.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else { return }
+        guard let mainController = UIStoryboard.myStoryboardName.instantiateViewController(withIdentifier: "MainNavigationController") as? UINavigationController else { return }
             UIApplication.shared.windows.first?.rootViewController = mainController
             UIApplication.shared.windows.first?.makeKeyAndVisible()
         }
@@ -56,21 +59,23 @@ class RegisterViewController: UIViewController {
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
                 guard let self = self else { return }
-                if password.count < 6 || email.isEmpty {
+                if let err = error {
                     guard let popOverVC = UIStoryboard.myStoryboardName.instantiateViewController(identifier: "Popup") as? PopupViewController else { return }
-                    if let err = error {
-                        popOverVC.errorMessage = err.localizedDescription
-                    }
+                    popOverVC.errorMessage = err.localizedDescription
                     popOverVC.modalTransitionStyle = .crossDissolve
                     self.present(popOverVC, animated: true)
                 } else {
                     self.loadingLabel.text = "You are going to main page please wait..⏳"
                     self.screenState = .loading
-                    
                     }
                 }
             }
         }
+    
+    private func viewWithCurve() {
+        emailView.viewWithCurveAndShadow()
+        passwordView.viewWithCurveAndShadow()
+    }
         
         
         

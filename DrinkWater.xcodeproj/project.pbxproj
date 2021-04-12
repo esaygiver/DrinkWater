@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		841D3DE72622F82D00100C1F /* Date + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D3DE62622F82D00100C1F /* Date + String.swift */; };
+		841D3DE92623378500100C1F /* UIView + Curve&Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D3DE82623378500100C1F /* UIView + Curve&Shadow.swift */; };
 		8458BF35261F962600517F4A /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458BF34261F962600517F4A /* UIStoryboard.swift */; };
 		8458BF3A2621E23500517F4A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8458BF392621E23500517F4A /* GoogleService-Info.plist */; };
 		8458BF3C2621E3EA00517F4A /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458BF3B2621E3EA00517F4A /* PopupViewController.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		3FAE049A280F025857EE0B43 /* Pods_DrinkWater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrinkWater.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841D3DE62622F82D00100C1F /* Date + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + String.swift"; sourceTree = "<group>"; };
+		841D3DE82623378500100C1F /* UIView + Curve&Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Curve&Shadow.swift"; sourceTree = "<group>"; };
 		8458BF34261F962600517F4A /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		8458BF392621E23500517F4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8458BF3B2621E3EA00517F4A /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
@@ -71,12 +73,30 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		841D3DEA26233B9700100C1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8458BF3E2622273400517F4A /* WaterHours.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		841D3DEB26233BB100100C1F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				847F1D35261F37820035A6A1 /* AppDelegate.swift */,
+				847F1D37261F37820035A6A1 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		8458BF36261FA56500517F4A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				847F1D53261F83790035A6A1 /* UIButton + Shape.swift */,
 				8458BF34261F962600517F4A /* UIStoryboard.swift */,
 				841D3DE62622F82D00100C1F /* Date + String.swift */,
+				841D3DE82623378500100C1F /* UIView + Curve&Shadow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -111,10 +131,9 @@
 		847F1D34261F37820035A6A1 /* DrinkWater */ = {
 			isa = PBXGroup;
 			children = (
-				847F1D35261F37820035A6A1 /* AppDelegate.swift */,
-				847F1D37261F37820035A6A1 /* SceneDelegate.swift */,
-				8458BF3E2622273400517F4A /* WaterHours.swift */,
+				841D3DEB26233BB100100C1F /* App */,
 				8458BF36261FA56500517F4A /* Extensions */,
+				841D3DEA26233B9700100C1F /* Model */,
 				847F1D4F261F80EA0035A6A1 /* Controller */,
 				847F1D50261F80F80035A6A1 /* View */,
 				8458BF3D2621E68400517F4A /* Supporting Files */,
@@ -272,6 +291,7 @@
 				8458BF3C2621E3EA00517F4A /* PopupViewController.swift in Sources */,
 				847F1D4A261F80A90035A6A1 /* LogInViewController.swift in Sources */,
 				847F1D4C261F80B40035A6A1 /* RegisterViewController.swift in Sources */,
+				841D3DE92623378500100C1F /* UIView + Curve&Shadow.swift in Sources */,
 				847F1D56261F85A30035A6A1 /* HoursReminderTableViewCell.swift in Sources */,
 				847F1D3A261F37820035A6A1 /* WelcomeViewController.swift in Sources */,
 				841D3DE72622F82D00100C1F /* Date + String.swift in Sources */,

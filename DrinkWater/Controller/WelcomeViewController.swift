@@ -35,6 +35,18 @@ class WelcomeViewController: UIViewController {
         }
     }
     
+    @IBAction func registerButtonTapped(_ sender: Any) {
+        guard let registerVC = UIStoryboard.myStoryboardName.instantiateViewController(identifier: "RegisterVC") as? RegisterViewController else { return }
+        registerVC.modalTransitionStyle = .flipHorizontal
+        self.present(registerVC, animated: true)
+    }
+    
+    @IBAction func logInButtonTapped(_ sender: Any) {
+        guard let logInVC = UIStoryboard.myStoryboardName.instantiateViewController(identifier: "logInVC") as? LogInViewController else { return }
+        logInVC.modalTransitionStyle = .flipHorizontal
+        self.present(logInVC, animated: true)
+    }
+    
     private func curvyButtons() {
         logInButton.getCurvyButton()
         registerButton.getCurvyButton()

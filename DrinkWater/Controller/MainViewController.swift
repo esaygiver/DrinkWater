@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainViewController: UIViewController {
 
@@ -16,6 +17,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var progressCompleteLabel: UILabel!
     
     private lazy var waterHours = [WaterHours]()
+    private let content = UNMutableNotificationContent()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +30,53 @@ class MainViewController: UIViewController {
         waterHours.append(WaterHours(hour: "21:00", done: false))
     }
     
+    @IBAction func logOutButtonTapped(_ sender: UIBarButtonItem) {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+            guard let welcomeVC = UIStoryboard.myStoryboardName.instantiateViewController(identifier: "WelcomeScreen") as? WelcomeViewController else { return }
+            UIApplication.shared.windows.first?.rootViewController = welcomeVC
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
+    }
+    
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
     }
+//    private func localNotifications() {
+//        content.title = "Weekly Staff Meeting"
+//        content.body = "Every Tuesday at 2pm"
+//        content.sound = UNNotificationSound.default
+//
+//        // Configure the recurring date.
+//        var dateComponents = DateComponents()
+//        dateComponents.calendar = Calendar.current
+//
+//        dateComponents.weekday = 1  // Tuesday
+//        dateComponents.hour = 14    // 14:00 hours
+//
+//        // Create the trigger as a repeating event.
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 300, repeats: false)
+//
+//        let date = Date(timeIntervalSinceNow: 3600)
+//        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+//
+//        // Create the request
+//        let uuidString = UUID().uuidString
+//        let request = UNNotificationRequest(identifier: uuidString,
+//                    content: content, trigger: trigger)
+//
+//        // Schedule the request with the system.
+//        let notificationCenter = UNUserNotificationCenter.current()
+//        notificationCenter.add(request) { (error) in
+//           if error != nil {
+//              // Handle any errors.
+//           }
+//        }
+//    }
 }
 
 //MARK: - TableView Delegate And Datasource
@@ -71,6 +116,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             progressCompleteLabel.isHidden = true
         }
+
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
